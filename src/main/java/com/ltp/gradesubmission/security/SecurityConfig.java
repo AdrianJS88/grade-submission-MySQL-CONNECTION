@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .headers(headers -> headers.frameOptions().disable())
                 .csrf( AbstractHttpConfigurer::disable )
                 .authorizeHttpRequests(authorize -> authorize
-                        .antMatchers("/h2/**").permitAll()
+                        .antMatchers("localhost:8080/").permitAll()
                         .antMatchers(HttpMethod.POST, SecurityConstants.REGISTER_PATH).permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(new ExceptionHandlerFilter(), AuthenticationFilter.class)
